@@ -1,0 +1,121 @@
+:root {
+    --light-blue: #00ADB5;
+    --dark-blue: #222831;
+    --grey: #393E46;
+    --white: #EEEEEE;
+    --red: #FF5C58;
+  }
+  * {
+    font-family: 'Nunito', sans-serif;
+}
+.contenedor-header{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    background-color: var(--dark-blue);
+}
+.contenedor-navbar{
+    display:flex;
+    min-height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 24px;
+    border-bottom: 1px solid var(--grey);
+}
+
+#logo-nav{
+    width: 40px;
+}
+#contenedor-numero-cart{
+    width: 25px;
+    margin: auto;
+    height: 10px;
+    transition: 0.2s;
+}
+#numero-cart.active{
+    position: relative;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.75em;
+    background: var(--red);
+    border-radius: 25px;
+    width: 13px;
+    height: 13px;
+    text-align: center;
+    
+}
+
+/* CONTIENE TODOS LOS LINKS DE NAVEGACION*/
+.navbar-menu{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    color: white;
+    
+}
+.navbar-menu li{
+    list-style: none;
+}
+.navbar-link{
+    font-size: 1.5em;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    transition: 100ms;
+}
+.navbar-link:hover{
+    color: var(--blue);
+}
+.boton-hamburguesa{
+    display: none;
+    cursor: pointer;
+}
+.linea-boton-hamburguesa{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: 0.2s all ease-in-out;
+    background-color: white;
+}
+.boton-hamburguesa:hover .linea-boton-hamburguesa{
+    background: var(--blue);
+}
+.boton-hamburguesa:hover.active .linea-boton-hamburguesa{
+    background: var(--red)
+}
+@media screen and (max-width:768px) {
+    .boton-hamburguesa{
+        display: block;
+    }
+    .boton-hamburguesa.active .linea-boton-hamburguesa:nth-child(2){
+        opacity: 0;
+    }
+    .boton-hamburguesa.active .linea-boton-hamburguesa:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .boton-hamburguesa.active .linea-boton-hamburguesa:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .navbar-menu{
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--dark-blue);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        border-top: 1px solid var(--grey);
+        border-bottom: 1px solid var(--grey);
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    .navbar-menu.active{
+        left: 0;
+    }
+}
+@media screen and(min-width:768px) {
+
+}
