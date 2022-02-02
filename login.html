@@ -5,25 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/4ba0ecbaac.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <nav>
+    <header class="contenedor-header">
+        <nav class="contenedor-navbar">
+          <img id="logo-nav" src="/images/logo.png" alt="" />
+          <ul class="navbar-menu">
+            <li class="nav-item"><a class="navbar-link" href="index.html">Inicio</a></li>
+            <li class="nav-item">
+              <a class="navbar-link" href="#">Productos</a>
+            </li>
+            <li class="nav-item"><a class="navbar-link" href="login.html">Ingresar</a></li>
+            <li class="nav-item" id="contenedor-cart">
+              <a href="carrito.html"><i class="fas fa-shopping-cart"></i></a>
+              <div id="contenedor-numero-cart">
+                <a href="carrito.html"><p id="numero-cart"></p></a>
+              </div>
+            </li>
+          </ul>
+          <div class="boton-hamburguesa">
+            <span class="linea-boton-hamburguesa"></span>
+            <span class="linea-boton-hamburguesa"></span>
+            <span class="linea-boton-hamburguesa"></span>
+          </div>
         </nav>
-    </header>
+      </header>
     <main>
         <section class="contenedor-general-login">
             <div class="contenedor-login">
                 <img src="" alt="">
                 <h2>Login</h2>
                 <label for="">email</label>
-                <input type="email" name="" id="">
+                <input type="email" name="" id="email">
                 <label for="">contraseña</label>
-                <input type="password" name="" id="">
+                <input type="password" name="" id="password">
                 <input type="button" value="Entrar" id="botonLog">
                 <div>
                     <a href="">¿No tienes cuenta? Registrarse</a>
@@ -33,11 +60,14 @@
             <div class="contenedor-descripcion-principal">
                 <div>
                     <h2>Bienvenido de nuevo</h2>
-                    <h1>Buy & Sell</h1>
+                    <h1>HopeGames</h1>
                 </div>
                 <p>Tu tienda de confianza donde podes encontrar miles de productos!</p>
+                <img src="https://pngimg.com/uploads/astronaut/astronaut_PNG29.png" alt="">
+                <span></span>
             </div>
         </section>
     </main>
+    <script src="javascript/index.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/navbar.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,7 +24,7 @@
       <nav class="contenedor-navbar">
         <img id="logo-nav" src="/images/logo.png" alt="" />
         <ul class="navbar-menu">
-          <li class="nav-item"><a class="navbar-link" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="navbar-link" href="index.html">Inicio</a></li>
           <li class="nav-item">
             <a class="navbar-link" href="#">Productos</a>
           </li>
@@ -70,17 +71,6 @@
                   <option value="5">Placas de video</option>
                 </select>
               </div>
-             <!--
-               <div class="filtros-especificos">
-                 <p>Producto</p>
-                 <select name="select" id="filtro-producto">
-                   <option value="value1" selected>Value 1</option>
-                   <option value="value2">Value 2</option>
-                   <option value="value3">Value 3</option>
-                  </select>
-                </div>
-              --> 
-               
               <div class="filtros-especificos" id="filtro-range">
                 <p>Precio</p>
                 <div class="contenedor-input-range">
@@ -88,7 +78,7 @@
                   <input
                     type="range"
                     min="0"
-                    max="40000"
+                    max="180000"
                     value="40000"
                     id="input-range"
                   />
@@ -108,6 +98,6 @@
     <footer></footer>
     <script  src="javascript/index.js"></script>
     <script type="module" src="javascript/catalogo.js"></script>
-    <script type="module" src="/javascript/carrito.js"></script>
+    <script type="module" src="javascript/localstorage.js"></script>
   </body>
 </html>

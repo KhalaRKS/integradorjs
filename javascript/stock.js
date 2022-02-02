@@ -51,7 +51,7 @@ export const STOCK = [
     },
     {
         nombre: 'Mouse Gaming G703 Lightspeed Wireless',
-        precio: 8.999,
+        precio: 8999,
         url: 'https://logitechar.vteximg.com.br/arquivos/ids/157137-1000-1000/910-005639-1.png?v=637064255984200000'
     }
 ]
@@ -68,5 +68,4 @@ STOCK.sort(function (a, b) {
   STOCK.forEach((element,index) =>{
     element.id = index
 })
-console.log(STOCK);
 export default STOCK
