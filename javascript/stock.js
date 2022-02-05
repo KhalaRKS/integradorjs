@@ -53,6 +53,11 @@ export const STOCK = [
         nombre: 'Mouse Gaming G703 Lightspeed Wireless',
         precio: 8999,
         url: 'https://logitechar.vteximg.com.br/arquivos/ids/157137-1000-1000/910-005639-1.png?v=637064255984200000'
+    },
+    {
+        nombre: 'Mouse Gaming G703 Lightspeed Wireless',
+        precio: 3699,
+        url: 'https://logitechar.vteximg.com.br/arquivos/ids/157137-1000-1000/910-005639-1.png?v=637064255984200000'
     }
 ]
 

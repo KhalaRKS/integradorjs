@@ -1,6 +1,5 @@
 const hamburguesa = document.querySelector(".boton-hamburguesa");
 const navbarMenu = document.querySelector(".navbar-menu");
-
 hamburguesa.addEventListener("click", () => {
   hamburguesa.classList.toggle("active");
   navbarMenu.classList.toggle("active");
@@ -12,6 +11,9 @@ document.querySelectorAll(".navbar-link").forEach((element) => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () =>{
+
+})
 
 
 /*
