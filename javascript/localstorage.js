@@ -10,7 +10,6 @@ export function agregarItemAlCarrito(id) {
     //2) EN CASO DE EXISTIR AGREGAR KEY CANTIDAD E INCREMENTARLA
     //3) EN CASO DE NO EXISTIR AGREGAR AL LOCALSTORAGE
     // PARSEAR LOS VALORES OBJETOS
-    console.log('ID DEL PRODUCTO'+id);
     if(localStorage.getItem(id)){
         let item = JSON.parse(localStorage.getItem(id))
         item.cantidad++

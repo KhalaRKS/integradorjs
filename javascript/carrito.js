@@ -1,11 +1,12 @@
 "use strict";
 import { STOCK } from "./stock.js";
 //import { borrarCatalogo } from './catalogo.js';
-const CONTENEDOR_CARRITO = document.querySelector(".contenedor-carrito");
+const CONTENEDOR_CARRITO = document.querySelector(".contenedor-carrito")
 const CONTENEDOR_BOTONES_CARRITO = document.querySelector(
   ".contenedor-botones-carrito"
 );
-const TEXTO_CARRITO_VACIO = document.getElementById("texto-carrito-vacio");
+const VACIAR_CARRITO = document.getElementById('vaciar-carrito')
+const TEXTO_CARRITO_VACIO = document.getElementById("texto-carrito-vacio")
 
 let keys = Object.keys(localStorage);
 
@@ -20,11 +21,11 @@ function renderizarCarrito() {
 
 function setCantidad(item, cant) {
   item.cantidad = cant;
-  console.log(item);
   if (item.cantidad > 20) item.cantidad = 20;
 
   if (item.cantidad <= 0) {
     localStorage.removeItem(item.id);
+    keys = Object.keys(localStorage)
     item.cantidad = 0;
     renderizarCarritoVacio();
     return item.cantidad;
@@ -52,7 +53,7 @@ function renderizarProducto(producto, index) {
   contenedor_producto.setAttribute("class", "contenedor-producto-carrito");
 
   imagen.setAttribute("class", "imagen-carrito");
-  imagen.setAttribute("src", producto.url);
+  imagen.setAttribute("src", producto.url[0]);
 
   contenedor_precio_input.setAttribute("class", "contenedor-precio-input");
 
@@ -77,10 +78,8 @@ function renderizarProducto(producto, index) {
 
   boton_sumar.addEventListener("click", () => {
     let cantidadProductos = setCantidad(item, item.cantidad += 1);
-    console.log(cantidadProductos);
 
     input.value = cantidadProductos;
-    console.log(input.value);
     precio.innerText = "$" + item.precio * cantidadProductos;
   });
 
@@ -91,13 +90,11 @@ function renderizarProducto(producto, index) {
       contenedor_producto.remove();
     }
     input.value = cantidadProductos;
-    console.log(input.value);
     precio.innerText = "$" + item.precio * cantidadProductos;
   });
 
   boton_remover.addEventListener('click', () =>{
     setCantidad(item, 0)
-      keys = Object.keys(localStorage);
       contenedor_producto.remove()
   })
 
@@ -135,11 +132,36 @@ function renderizarProducto(producto, index) {
 function renderizarCarritoVacio() {
   if (localStorage.length > 0) {
     CONTENEDOR_BOTONES_CARRITO.classList.add("active");
+    const PRECIO_TOTAL = document.getElementById('precio-total-carrito')
+    let precio_total = 0;
+      for (let index = 0; index < localStorage.length; index++) {
+        if (keys[index]) {
+          const element = JSON.parse(localStorage[keys[index]])
+          precio_total += (element.precio * element.cantidad)
+        }
+        
+  }
+    
+    PRECIO_TOTAL.innerText = `Precio Total: \$ ${precio_total}`
   } else {
+      while (CONTENEDOR_CARRITO.firstChild) {
+        CONTENEDOR_CARRITO.removeChild(CONTENEDOR_CARRITO.firstChild)
+      }
     TEXTO_CARRITO_VACIO.classList.add("active");
     CONTENEDOR_BOTONES_CARRITO.classList.remove("active");
   }
 }
-document.addEventListener("DOMContentLoaded", renderizarCarritoVacio());
 
-renderizarCarrito();
+function vaciarCarrito(x) {
+  if(x){
+    localStorage.clear()
+  }
+}
+
+document.addEventListener("DOMContentLoaded", renderizarCarritoVacio(), renderizarCarrito());
+if(VACIAR_CARRITO){
+  VACIAR_CARRITO.addEventListener('click', () =>{
+    vaciarCarrito(true)
+    renderizarCarritoVacio()
+  })
+}

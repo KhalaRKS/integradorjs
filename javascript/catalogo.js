@@ -1,13 +1,16 @@
 "use strict";
 import { STOCK } from "./stock.js";
+import { toggleClassFondoModal, renderizarModal } from "./modal.js";
 import { agregarItemAlCarrito, colorearNumeroCarrito } from "./localstorage.js";
 const CONTENEDOR_CARDS = document.querySelector('.contenedor-cards')
 
 /* GUARDAMOS EL NODO DE LOS BUSCADORES/FILTROS PARA PODER UTILIZARLOS CON 1 SOLO ACCESO AL DOM*/
 const BUSCADOR_TEXTO = document.getElementById('buscador-texto')
+/* */
 const FILTRO_PRECIO = document.getElementById("input-range");
 const FILTRO_PRODUCTO = document.getElementById("filtro-producto");
-const MODAL = document.querySelector('.fondo-modal')
+/** */
+
 /*MANIPULAMOS UN DATO AUXILIAR DEL STOCK ACTUAL RECIBIDO PARA NO TRANSGIVERSAR INFORMACIÓN */
 const STOCK_AUXILIAR = STOCK;
 
@@ -26,7 +29,7 @@ function renderizarProducto(producto) {
 
   titulo.innerText = producto.nombre;
 
-  imagen.setAttribute("src", producto.url);
+  imagen.setAttribute("src", producto.url[0]);
   imagen.setAttribute("alt", "imagen-producto.png");
   imagen.setAttribute("loading", "lazy");
 
@@ -37,7 +40,7 @@ function renderizarProducto(producto) {
   boton_agregar.setAttribute('value', producto.id)
   boton_agregar.innerText = "Agregar al carrito";
   boton_agregar.addEventListener('click', (e)=>{
-    //ID
+    
     agregarItemAlCarrito(producto.id)
     colorearNumeroCarrito()
     e.stopPropagation()
@@ -54,7 +57,11 @@ function renderizarProducto(producto) {
   carta.appendChild(contenedor_botones);
 
   /* RETORNAMOS LA CARTA COMPLETAMENTE ORDENADA */
-
+  carta.addEventListener('click', (e) =>{
+    toggleClassFondoModal()
+    
+    renderizarModal(producto)
+  })
   return carta;
 }
 
@@ -63,7 +70,6 @@ function cargarCatalogo() {
   STOCK.forEach((element) => {
     let card = renderizarProducto(element);
     CONTENEDOR_CARDS.appendChild(card);
-    añadirModal(card)
   });
 }
 
@@ -85,8 +91,6 @@ function filtrarProductos() {
                 const element = PRODUCTOS_COINCIDENTES[index];
                 let card = renderizarProducto(element,index)
                 CONTENEDOR_CARDS.appendChild(card);
-                console.log(CONTENEDOR_CARDS[index]);
-                añadirModal(card)
             }
         }else{
             borrarCatalogo()
@@ -96,22 +100,12 @@ function filtrarProductos() {
         borrarCatalogo()
         cargarCatalogo()
     }
-}
-function añadirModal(card) {
-      /* */
-    card.addEventListener('click', (e) =>{
-      MODAL.classList.add('active')
-      console.log('hola');
-    })
-    MODAL.addEventListener('click', () =>{
-      MODAL.classList.remove('active')
-    })
-
   }
-document.body.addEventListener('DOMContentLoaded', cargarCatalogo(), colorearNumeroCarrito())
-
-BUSCADOR_TEXTO.addEventListener('input', filtrarProductos)
-
-//export { borrarCatalogo }
+  document.body.addEventListener('DOMContentLoaded', cargarCatalogo(), colorearNumeroCarrito())
+  
+  BUSCADOR_TEXTO.addEventListener('input', filtrarProductos)
 
 
+
+
+    

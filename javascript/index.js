@@ -12,20 +12,6 @@ document.querySelectorAll(".navbar-link").forEach((element) => {
 });
 
 document.addEventListener('DOMContentLoaded', () =>{
-
+   
 })
 
-
-/*
-import { STOCK } from "stock";
-
-var STOCK_AUXILIAR = STOCK
-function buscarProductos() {
-         var productosEncontrados = STOCK_AUXILIAR.filter((carta) =>
-            new RegExp(filterText.value, "i").test(
-                carta.name.toLowerCase())
-    console.log(productosEncontrados);
-}
-BUSCADOR.addeventlistener('change', buscarProductos())
-console.log("hola");
-*/
