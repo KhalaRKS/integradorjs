@@ -11,7 +11,6 @@ document.querySelectorAll(".navbar-link").forEach((element) => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () =>{
-   
-})
+
+
 

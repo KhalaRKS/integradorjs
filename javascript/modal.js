@@ -10,7 +10,7 @@ export function toggleClassFondoModal() {
     FONDO_MODAL.classList.add('active')
 
 }
-export function renderizarModal(producto,) {
+export function renderizarModal(producto) {
     MODAL.innerHTML = ''
     let titulo = document.createElement("h2");
     let imagen = document.createElement("img");
