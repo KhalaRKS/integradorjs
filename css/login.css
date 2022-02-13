@@ -106,13 +106,17 @@ a:visited{
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
+    color: var(--white);
+}
+.contenedor-login div{
+    display: flex;
+    justify-content: space-between;
 }
 .contenedor-login h2{
     text-transform: uppercase;
+
     font-size: 2.5em;
     font-weight: 700;
-    text-shadow: -1px 0 var(--blue), 0 1px var(--blue), 1px 0 var(--blue), 0 -1px var(--blue);
-    
 }
 .contenedor-login label{
     text-transform: uppercase;
@@ -120,18 +124,45 @@ a:visited{
     font-weight: 400;
     font-size: 1.4em;
 }
-.contenedor-login input{
+.contenedor-login div input{
+    width: 30%;
+    min-width: 200px;
+    height: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.3em;
+}
+#botonLog{
     width: 50%;
-    min-width: 250px;
-    height: 25px;
+    min-width: 150px;
+    height: auto;
     margin:auto;
     margin-top: 0;
     margin-bottom: 0;
     font-size: 1.3em;
     
 }
-.contenedor-login a {
+.contenedor-texto{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
     font-size: 1.2em;
+}
+.contenedor-login a {
+    margin-top: 10px;
+}
+.contenedor-inputs-login{
+    width: 85%;
+    min-width: 320px;
+    min-height: 300px;
+    margin: auto;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    background-color: var(--grey);
+    color: var(--white);
 }
 #botonLog{
     width: 40%;
@@ -140,6 +171,12 @@ a:visited{
 }
 .contenedor-descripcion-principal{
     display: none;
+}
+.mostrar-input-registro{
+    display: none;
+}
+.mostrar-input-registro.active{
+    display: flex;
 }
 
 @media screen and (min-width:768px){
@@ -154,12 +191,16 @@ a:visited{
     }
     .contenedor-login{
         width: 50%;
+    }
+    .contenedor-inputs-login{
+        width: 90%;
         min-width: 320px;
         padding-top: 20vh;
         height: 50vh;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
+        margin-bottom: 15px;
     }
     .contenedor-login h2{
         text-transform: uppercase;
@@ -178,8 +219,6 @@ a:visited{
         width: 60%;
         min-width: 200px;
         height: 30px;
-        margin:auto;
-        margin-top: 0;
         margin-bottom: 0;
         font-size: 1.3em;
         border: none;

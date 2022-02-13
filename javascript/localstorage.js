@@ -25,8 +25,8 @@ export function agregarItemAlCarrito(id) {
 
 export function colorearNumeroCarrito() {
 
-    if (localStorage.length) {
-        NUMERO_CARRITO.innerText = localStorage.length
+    if (localStorage.length > 1) {
+        NUMERO_CARRITO.innerText = (localStorage.length - 1)
         NUMERO_CARRITO.classList.add('active')
         
     }

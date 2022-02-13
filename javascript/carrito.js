@@ -1,18 +1,18 @@
 "use strict";
 import { STOCK } from "./stock.js";
 //import { borrarCatalogo } from './catalogo.js';
-const CONTENEDOR_CARRITO = document.querySelector(".contenedor-carrito")
+const CONTENEDOR_CARRITO = document.querySelector(".contenedor-carrito");
 const CONTENEDOR_BOTONES_CARRITO = document.querySelector(
   ".contenedor-botones-carrito"
 );
-const VACIAR_CARRITO = document.getElementById('vaciar-carrito')
-const TEXTO_CARRITO_VACIO = document.getElementById("texto-carrito-vacio")
+const VACIAR_CARRITO = document.getElementById("vaciar-carrito");
+const TEXTO_CARRITO_VACIO = document.getElementById("texto-carrito-vacio");
 
 let keys = Object.keys(localStorage);
 
 function renderizarCarrito() {
   for (let index = 0; index < keys.length; index++) {
-    if (keys[index]) {
+    if (keys[index] != "users") {
       const element = JSON.parse(localStorage[Number(keys[index])]);
       renderizarProducto(element, keys[index]);
     }
@@ -25,7 +25,7 @@ function setCantidad(item, cant) {
 
   if (item.cantidad <= 0) {
     localStorage.removeItem(item.id);
-    keys = Object.keys(localStorage)
+    keys = Object.keys(localStorage);
     item.cantidad = 0;
     renderizarCarritoVacio();
     return item.cantidad;
@@ -77,14 +77,14 @@ function renderizarProducto(producto, index) {
   /*FUNCION PARA AGREGAR EVENTO REMOVER ITEM DEL CARRITO */
 
   boton_sumar.addEventListener("click", () => {
-    let cantidadProductos = setCantidad(item, item.cantidad += 1);
+    let cantidadProductos = setCantidad(item, (item.cantidad += 1));
 
     input.value = cantidadProductos;
     precio.innerText = "$" + item.precio * cantidadProductos;
   });
 
   boton_restar.addEventListener("click", () => {
-    let cantidadProductos = setCantidad(item, item.cantidad -= 1);
+    let cantidadProductos = setCantidad(item, (item.cantidad -= 1));
 
     if (cantidadProductos == 0) {
       contenedor_producto.remove();
@@ -93,22 +93,21 @@ function renderizarProducto(producto, index) {
     precio.innerText = "$" + item.precio * cantidadProductos;
   });
 
-  boton_remover.addEventListener('click', () =>{
-    setCantidad(item, 0)
-      contenedor_producto.remove()
-  })
+  boton_remover.addEventListener("click", () => {
+    setCantidad(item, 0);
+    contenedor_producto.remove();
+  });
 
-  input.addEventListener('focusout', () =>{
-    let cantidadProductos = setCantidad(item, Number(input.value))
+  input.addEventListener("focusout", () => {
+    let cantidadProductos = setCantidad(item, Number(input.value));
     if (cantidadProductos == 0) {
       contenedor_producto.remove();
     }
 
     input.value = cantidadProductos;
     precio.innerText = "$" + item.precio * cantidadProductos;
-    
-  })
-  
+  });
+
   contenedor_botones.appendChild(boton_restar);
   contenedor_botones.appendChild(input);
   contenedor_botones.appendChild(boton_sumar);
@@ -130,38 +129,42 @@ function renderizarProducto(producto, index) {
 }
 /**RENDERIZA HTML DEPENDIENDO DE QUE EL CARRITO SE ENCUENTRE VACIO O CON INFORMACION */
 function renderizarCarritoVacio() {
-  if (localStorage.length > 0) {
+  if (localStorage.length > 1) {
     CONTENEDOR_BOTONES_CARRITO.classList.add("active");
-    const PRECIO_TOTAL = document.getElementById('precio-total-carrito')
+    const PRECIO_TOTAL = document.getElementById("precio-total-carrito");
     let precio_total = 0;
-      for (let index = 0; index < localStorage.length; index++) {
-        if (keys[index]) {
-          const element = JSON.parse(localStorage[keys[index]])
-          precio_total += (element.precio * element.cantidad)
-        }
-        
-  }
-    
-    PRECIO_TOTAL.innerText = `Precio Total: \$ ${precio_total}`
-  } else {
-      while (CONTENEDOR_CARRITO.firstChild) {
-        CONTENEDOR_CARRITO.removeChild(CONTENEDOR_CARRITO.firstChild)
+    for (let index = 0; index < keys.length; index++) {
+      if (keys[index] != "users") {
+        const element = JSON.parse(localStorage[keys[index]]);
+        precio_total += element.precio * element.cantidad;
       }
+    }
+    PRECIO_TOTAL.innerText = `Precio Total: \$ ${precio_total}`;
+  } else if (localStorage.length <= 1) {
+    while (CONTENEDOR_CARRITO.firstChild) {
+      CONTENEDOR_CARRITO.removeChild(CONTENEDOR_CARRITO.firstChild);
+    }
     TEXTO_CARRITO_VACIO.classList.add("active");
     CONTENEDOR_BOTONES_CARRITO.classList.remove("active");
   }
 }
 
-function vaciarCarrito(x) {
-  if(x){
-    localStorage.clear()
+function vaciarCarrito() {
+  for (let index = 0; index < keys.length; index++) {
+    if (keys[index] != "users") {
+      localStorage.removeItem([keys[index]]);
+    }
   }
+  keys = Object.keys(localStorage);
 }
-
-document.addEventListener("DOMContentLoaded", renderizarCarritoVacio(), renderizarCarrito());
-if(VACIAR_CARRITO){
-  VACIAR_CARRITO.addEventListener('click', () =>{
-    vaciarCarrito(true)
-    renderizarCarritoVacio()
-  })
+document.addEventListener(
+  "DOMContentLoaded",
+  renderizarCarritoVacio(),
+  renderizarCarrito()
+);
+if (VACIAR_CARRITO) {
+  VACIAR_CARRITO.addEventListener("click", () => {
+    vaciarCarrito();
+    renderizarCarritoVacio();
+  });
 }

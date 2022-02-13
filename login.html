@@ -47,14 +47,28 @@
             <div class="contenedor-login">
                 <img src="" alt="">
                 <h2>Login</h2>
-                <label for="">email</label>
-                <input type="email" name="" id="email">
-                <label for="">contraseña</label>
-                <input type="password" name="" id="password">
+                <div class="contenedor-inputs-login">
+                  <div class="mostrar-input-registro">
+                    <label for="">Nombre</label>
+                    <input type="text" id="nombre" required>
+                  </div>
+                  <div>
+                    <label for="">email</label>
+                    <input type="email" name="" id="email" required>
+                  </div>
+                  <div>
+                    <label for="">contraseña</label>
+                    <input type="password" name="" id="password" required>
+                  </div>
+                  <div class="mostrar-input-registro">
+                    <label for="">confirmar contraseña</label>
+                    <input type="password" name="" id="confirmar-password" required>
+                  </div>
+                </div>
                 <input type="button" value="Entrar" id="botonLog">
-                <div>
-                    <a href="">¿No tienes cuenta? Registrarse</a>
-                    <a href="">Olvide mi contraseña</a>
+                <div class="contenedor-texto">
+                    <a href="#" id="texto-registrarse"><p>¿No tienes cuenta? Registrarse</p></a>
+                    <a href="#"id='texto-recover'><p>¿Olvidaste tu contraseña?</p></a>
                 </div>
             </div>
             <div class="contenedor-descripcion-principal">
@@ -68,6 +82,7 @@
             </div>
         </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
     <script src="javascript/index.js"></script>
     <script src="javascript/login.js"></script>
 </body>

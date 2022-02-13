@@ -114,13 +114,16 @@ a:visited{
     border: 1px solid var(--grey);
     border-radius: 5px;
     color: white;
-    padding:2px;
+    padding:10px;
     transition: 0.2s ease;
     z-index: 0;
 }
 .card:hover{
     transform: scale(1.02);
     cursor: pointer;
+}
+.card h2{
+    margin-bottom: 3px;
 }
 .card img{
     object-fit: contain;
