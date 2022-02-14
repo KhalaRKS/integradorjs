@@ -1,12 +1,13 @@
 "use strict";
-import { STOCK } from "./stock.js";
-//import { borrarCatalogo } from './catalogo.js';
+
 const CONTENEDOR_CARRITO = document.querySelector(".contenedor-carrito");
 const CONTENEDOR_BOTONES_CARRITO = document.querySelector(
   ".contenedor-botones-carrito"
 );
 const VACIAR_CARRITO = document.getElementById("vaciar-carrito");
 const TEXTO_CARRITO_VACIO = document.getElementById("texto-carrito-vacio");
+
+const MODAL_CARRITO = document.querySelector('.modal-carrito')
 
 let keys = Object.keys(localStorage);
 
@@ -131,6 +132,13 @@ function renderizarProducto(producto, index) {
 function renderizarCarritoVacio() {
   if (localStorage.length > 1) {
     CONTENEDOR_BOTONES_CARRITO.classList.add("active");
+    const FINALIZAR_COMPRA = document.getElementById('finalizar-compra')
+    FINALIZAR_COMPRA.addEventListener('click', () =>{
+      MODAL_CARRITO.classList.add('show')
+      MODAL_CARRITO.addEventListener('click', ()=> {
+        MODAL_CARRITO.classList.remove('show')
+      })
+    })
     const PRECIO_TOTAL = document.getElementById("precio-total-carrito");
     let precio_total = 0;
     for (let index = 0; index < keys.length; index++) {

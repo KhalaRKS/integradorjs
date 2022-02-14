@@ -46,12 +46,24 @@
 }
 
 /* CONTIENE TODOS LOS LINKS DE NAVEGACION*/
+#usuario-online{
+    display: none;
+    font-family: 'Nunito', sans-serif;
+    width: auto;
+    font-size: 1em;
+}
+#nav-li-salir{
+    display: none;
+}
 .navbar-menu{
     display: flex;
     justify-content: space-between;
     width: 70%;
     color: white;
     
+}
+.navbar-menu.login{
+    width: 50%;
 }
 .navbar-menu li{
     list-style: none;
