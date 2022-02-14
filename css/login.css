@@ -108,7 +108,7 @@ a:visited{
     text-align: center;
     color: var(--white);
 }
-.contenedor-login div{
+.input{
     display: flex;
     justify-content: space-between;
 }
@@ -164,10 +164,17 @@ a:visited{
     background-color: var(--grey);
     color: var(--white);
 }
-#botonLog{
+.boton-submit{
     width: 40%;
     font-size: 1.4em;
+    margin: auto;
     font-weight: 600;
+}
+#botonLog{
+    display: block;
+}
+#botonRegister {
+   display: none;
 }
 .contenedor-descripcion-principal{
     display: none;
@@ -177,6 +184,7 @@ a:visited{
 }
 .mostrar-input-registro.active{
     display: flex;
+    justify-content: space-between;
 }
 
 @media screen and (min-width:768px){

@@ -12,5 +12,5 @@ document.querySelectorAll(".navbar-link").forEach((element) => {
 });
 
 
-if (!localStorage.getItem('users')) localStorage.setItem('users', [])
+if (!localStorage.getItem('users')) localStorage.setItem('users', JSON.stringify([]))
 
