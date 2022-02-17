@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -26,6 +27,7 @@
           <a class="navbar-link" href="#">Productos</a>
         </li>
         <li class="nav-item" id="nav-li-ingresar"><a class="navbar-link" href="login.html">Ingresar</a></li>
+        <li class="nav-item" id="nav-li-salir"><a href="#" class="navbar-link">Cerrar sesión</a></li>
       </ul>
       <div class="boton-hamburguesa">
         <span class="linea-boton-hamburguesa"></span>
@@ -35,8 +37,27 @@
     </nav>
   </header>
       <main class="contenedor-main">
-        <div class="modal-carrito">
-
+        <div class="fondo-modal">
+          <div class="modal">
+            <div class="contenedor-imagen-modal">
+              <img src="/images/undraw_order_delivered_re_v4ab.svg" alt="orden-compra-articulos">
+            </div>
+            <div class="contenedor-data-modal">
+              <p class="user-type">Usuario:</p>
+              <p id="usuario">hola</p>
+            </div>
+            <div class="contenedor-data-modal">
+              <p class="user-type">Email:</p>
+              <p id="email">hola</p>
+            </div>
+            <div class="contenedor-data-modal">
+              <p id="color-precio"></p>
+            </div>
+            <div class="contenedor-descripcion">
+              <p id="descripcion-compra"></p>
+            </div>
+            <button id="confirmar-compra">Confimar compra</button>
+          </div>
         </div>
           <section class="contenedor-carrito">
               
@@ -49,12 +70,19 @@
           <section class="contenedor-botones-carrito">
             <p id="precio-total-carrito"></p>
             <div>
-              <button id="finalizar-compra">FINALIZAR COMPRA</button>
-              <button id="vaciar-carrito">VACIAR CARRITO</button>
+              <button class="boton-carrito" id="finalizar-compra">FINALIZAR COMPRA</button>
+              <button class="boton-carrito" id="vaciar-carrito">VACIAR CARRITO</button>
             </div>
           </section>
       </main>
       <script src="javascript/index.js"></script>
       <script type="module" src="javascript/carrito.js"></script>
+      <script type="module" src="javascript/modalcarrito.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+      <script type="text/javascript">
+      (function() {
+      emailjs.init("user_bBJEpjKBWMQqHQAs5dhOj");
+      })();
+      </script>
 </body>
 </html>

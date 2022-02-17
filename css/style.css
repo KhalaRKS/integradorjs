@@ -61,41 +61,6 @@ a {
 a:visited{
     color: inherit;
 }
-/* ANIMACIONES*/
-@keyframes modal{
-    0%{
-        width: 100%;
-        height: 100vh;
-        left:0;
-        top: 0;
-        opacity: 0;
-    }
-    3%{
-        width: 100%;
-        height: 100%;
-        left: 0;
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-@keyframes modal-reverse{
-    0%{
-        opacity: 1;
-        left: 0;
-    }    
-    90%{
-        opacity: 0;
-        left: 0;
-    }
-    100%{
-        left: -130%;
-        width: 100%;
-        opacity: 0;
-    }
-
-}
 
 /****************/
 * {

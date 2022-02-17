@@ -3,7 +3,6 @@ import { agregarItemAlCarrito, colorearNumeroCarrito } from "./localstorage.js";
 const FONDO_MODAL = document.querySelector('.fondo-modal')
 
 const MODAL = document.querySelector('.modal')
-const BOTON_MODAL = document.querySelector('.contenedor-boton-modal')
 
 export function toggleClassFondoModal() {
     FONDO_MODAL.classList.remove('inactive')

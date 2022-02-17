@@ -84,10 +84,13 @@ input[type=number] { -moz-appearance:textfield; }
 .contenedor-carrito{
     width: 90%;
     height: auto;
+    max-height: 500px;
+    overflow-y: scroll;
     margin: auto;
 }
 .contenedor-botones-carrito{
     width: 90%;
+    max-width: 700px;
     height: 45px;
     margin: auto;
     display: flex;
@@ -98,6 +101,28 @@ input[type=number] { -moz-appearance:textfield; }
 #precio-total-carrito{
     font-size: 1.5em;
     color: var(--white);
+    margin: 10px;
+}
+.boton-carrito{
+    width: 45%;
+    max-width: 200px;
+    background-color: var(--blue);
+    font-size: 1em;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.boton-carrito:hover{
+    box-shadow: 0px 0px 5px var(--blue);
+}
+#vaciar-carrito{
+    background-color: var(--red);
+}
+#vaciar-carrito:hover{
+    box-shadow: 0px 0px 5px var(--red);
 }
 #texto-carrito-vacio{
     display: none;
@@ -158,10 +183,6 @@ input[type=number] { -moz-appearance:textfield; }
     height: 45px;
     display: flex;
     justify-content: space-around;
-}
-.contenedor-botones-carrito div button{
-    width: 45%;
-    height: 45px;
 }
 .contenedor-producto-carrito{
     display: flex;

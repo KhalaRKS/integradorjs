@@ -1,3 +1,38 @@
+@keyframes modal{
+    0%{
+        width: 100%;
+        height: 100vh;
+        left:0;
+        top: 0;
+        opacity: 0;
+    }
+    3%{
+        width: 100%;
+        height: 100%;
+        left: 0;
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes modal-reverse{
+    0%{
+        opacity: 1;
+        left: 0;
+    }    
+    90%{
+        opacity: 0;
+        left: 0;
+    }
+    100%{
+        left: -130%;
+        width: 100%;
+        opacity: 0;
+    }
+
+}
+
 .fondo-modal{
     display: flex;
     justify-content: space-around;
@@ -108,4 +143,48 @@
 }
 .contenedor-botones-modal .botonAgregar:hover{
     opacity: 0.7;
+}
+
+/*MODAL-CARRITO*/
+.contenedor-data-modal{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row; 
+    padding-top: 15px;
+}
+.contenedor-descripcion{
+    width: 70%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.user-type{
+    text-align: left;
+    width: 30%;
+    font-size: 1.2em;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+    font-weight: 400;
+
+}
+#color-precio{
+    margin: auto;
+    font-size: 2em;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+    font-weight: 500;
+}
+#confirmar-compra{
+    padding: 5px;
+    width: 30%;
+    height: 25px;
+    background-color: var(--blue);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+    font-weight: 400;
 }
