@@ -26,7 +26,7 @@ export const STOCK = [
   {
     nombre: "SILLA GAMER CORSAIR T3 RUSH WHITE / GREY",
     precio: 69999,
-    categoria: "silla",
+    categoria: "sillas",
     descripcion:
       "Usando una combinación de telas premium no tejidas y microfibras, Corsair proporciona una imagen y sensación suave y lujosa a la vez que proporcionan transpirabilidad máxima. Construida con un diseño amigable con la ergonomía, esta silla para juegos te mantiene cómodo y relajado durante largas sesiones de juego.",
     url: [
@@ -132,7 +132,7 @@ export const STOCK = [
   {
     nombre: 'AORUS GeForce RTX™ 3080 XTREME 10G (rev. 2.0)',
     precio: 240000,
-    categoria: 'placa de video',
+    categoria: 'placasdevideo',
     descripcion: 'La nueva generacion de placas de video ya llego. Prueba todo el potencial con las nuevas RTX de gigabyte.',
     url: [
       'https://static.gigabyte.com/StaticFile/Image/Global/e066bfde756e8c1d0285ddb213a62bac/Product/29005/webp/300',

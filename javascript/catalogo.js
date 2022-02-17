@@ -12,7 +12,11 @@ const FILTRO_PRODUCTO = document.getElementById("filtro-producto");
 /** */
 
 /*MANIPULAMOS UN DATO AUXILIAR DEL STOCK ACTUAL RECIBIDO PARA NO TRANSGIVERSAR INFORMACIÓN */
-const STOCK_AUXILIAR = STOCK;
+var STOCK_AUXILIAR = STOCK;
+var activeFilter = {
+  categoria: null,
+  precio: null,
+}
 
 function renderizarProducto(producto) {
   /* CREAMOS TODAS LAS ETIQUETAS CORRESPONDIENTES A LA CARTA QUE VAMOS A RENDERIZAR */
@@ -81,26 +85,61 @@ function borrarCatalogo () {
 
 function filtrarProductos() {
     borrarCatalogo()
-    if(BUSCADOR_TEXTO.value != '' || BUSCADOR_TEXTO.value){
         var PRODUCTOS_COINCIDENTES = STOCK_AUXILIAR.filter((producto) =>
   new RegExp(BUSCADOR_TEXTO.value, "i").test(producto.nombre.toLowerCase())
 )
-       if(PRODUCTOS_COINCIDENTES){
+if(PRODUCTOS_COINCIDENTES){
             let i = 0;
             for (let index = 0; index < PRODUCTOS_COINCIDENTES.length; index++) {
                 const element = PRODUCTOS_COINCIDENTES[index];
                 let card = renderizarProducto(element,index)
                 CONTENEDOR_CARDS.appendChild(card);
             }
-        }else{
+        }else if(!PRODUCTOS_COINCIDENTES){
             borrarCatalogo()
             return 
-        }
-    }else{
+        }else{
         borrarCatalogo()
         cargarCatalogo()
     }
+  
   }
+  function filterCards (filtros){
+    STOCK_AUXILIAR = STOCK;
+    if(filtros.categoria != '0'){
+      STOCK_AUXILIAR = STOCK_AUXILIAR.filter( card => new RegExp(filtros.categoria, 'i').test(card.categoria.toLowerCase()))
+    }
+    
+    if(filtros.precio >= 0){
+      STOCK_AUXILIAR = STOCK_AUXILIAR.filter( card => card.precio <= filtros.precio)
+    }
+
+    return
+
+  }
+  function filters (precioFiltado,categoria){
+    
+
+    activeFilter.precio = precioFiltado
+    activeFilter.categoria = categoria
+
+    borrarCatalogo()
+    filterCards(activeFilter)
+    for (let index = 0; index < STOCK_AUXILIAR.length; index++) {
+        const element = STOCK_AUXILIAR[index];
+        filtrarProductos(element,index)
+    }
+}
+FILTRO_PRECIO.addEventListener('change',() =>{
+  let PRECIO_FILTRADO = FILTRO_PRECIO.valueAsNumber
+  let CATEGORIA = FILTRO_PRODUCTO.value
+  filters(PRECIO_FILTRADO,CATEGORIA)
+})
+FILTRO_PRODUCTO.addEventListener('change', () =>{
+  let PRECIO_FILTRADO = FILTRO_PRECIO.valueAsNumber
+  let CATEGORIA = FILTRO_PRODUCTO.value
+  filters(PRECIO_FILTRADO,CATEGORIA)
+})
   document.body.addEventListener('DOMContentLoaded', cargarCatalogo(), colorearNumeroCarrito())
   
   BUSCADOR_TEXTO.addEventListener('input', filtrarProductos)

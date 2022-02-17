@@ -1,10 +1,10 @@
 'use strict'
 const MOSTRAR_INPUT_REGISTRO = document.getElementsByClassName('mostrar-input-registro')
 const TEXTO_REGISTRARSE = document.getElementById('texto-registrarse')
-const TEXTO_RECOVER_PW = document.getElementById('texto-recover')
 
 const BOTON_LOGIN= document.getElementById('botonLogin')
 const BOTON_REGISTER = document.getElementById('botonRegister')
+const TEXTO_LOGIN = document.getElementById('texto-login')
 
 const NOMBRE_USER = document.getElementById('nombre')
 const EMAIL_USER = document.getElementById('email')
@@ -21,15 +21,27 @@ TEXTO_REGISTRARSE.addEventListener('click', () =>{
     MOSTRAR_INPUT_REGISTRO[1].classList.toggle('active')
     if (MOSTRAR_INPUT_REGISTRO[0].classList.contains('active')) {
         TEXTO_REGISTRARSE.innerText = 'Ya tengo una cuenta'
-        TEXTO_RECOVER_PW.style.display ='none';
         BOTON_LOGIN.style.display = 'none'
         BOTON_REGISTER.style.display = 'block'
+        TEXTO_LOGIN.innerText = 'Registrarse'
+        const removeFocus = document.querySelector('.label-input')
+        for (let index = 0; index < removeFocus.length; index++) {
+            const element = remove[index];
+            if (element.classList.contains('focus')) element.classList.remove('focus')
+            
+        }
 
     }else{
         TEXTO_REGISTRARSE.innerText = '¿No tienes cuenta? Registrarse'
-        TEXTO_RECOVER_PW.style.display ='block';
         BOTON_REGISTER.style.display = 'none'
         BOTON_LOGIN.style.display = 'block'
+        TEXTO_LOGIN.innerText = 'Login'
+        const removeFocus = document.querySelector('.label-input')
+        for (let index = 0; index < removeFocus.length; index++) {
+            const element = remove[index];
+            if (element.classList.contains('focus')) element.classList.remove('focus')
+            
+        }
     }
 })
 
@@ -40,7 +52,8 @@ function setNewAccount() {
         if (element.email === EMAIL_USER.value) {
             EMAIL_USER.value = ''
             EMAIL_USER.style.border = '1px solid red'
-            console.log('ESE EMAIL YA ESTA EN USO');
+            console.log('Ese mail ya esta en uso.');
+            alert('Ese mail ya se encuentra en uso, prueba utilizando uno distinto.');
             return
         }
     }
@@ -83,17 +96,84 @@ function logAccount() {
             return
         }else{
             console.log('la contraseña no existe');
+            PW_USER.value = ''
+            alert('la contraseña es invalida')
         }
     }else{
         console.log('no existe el user');
+        EMAIL_USER.value = ''
+        PW_USER.value = ''
+        alert('el usuario y/o la contraseña son invalidos')
     }
 }
 
 BOTON_REGISTER.addEventListener('click', setNewAccount)
 BOTON_LOGIN.addEventListener('click', logAccount)
 EMAIL_USER.addEventListener('focus', () =>{
-    EMAIL_USER.style.border = '1px solid transparent'
+    if (EMAIL_USER.value != '') {
+        return
+    }
+    const EMAIL_LABEL = document.getElementById('email-label')
+        EMAIL_LABEL.classList.add('focus')
+
+})
+EMAIL_USER.addEventListener('blur', () =>{
+    if (EMAIL_USER.value != '') {
+        return
+    }
+    const EMAIL_LABEL = document.getElementById('email-label')
+        EMAIL_LABEL.classList.remove('focus')
+
+})
+NOMBRE_USER.addEventListener('focus', () =>{
+    if (NOMBRE_USER.value != '') {
+        return
+    }
+    const NOMBRE_LABEL = document.getElementById('nombre-label')
+        NOMBRE_LABEL.classList.add('focus')
+
+})
+NOMBRE_USER.addEventListener('blur', () =>{
+    if (NOMBRE_USER.value != '') {
+        return
+    }
+    const NOMBRE_LABEL = document.getElementById('nombre-label')
+        NOMBRE_LABEL.classList.remove('focus')
+
 })
 PW_USER.addEventListener('focus', () =>{
-    PW_USER.style.border = '1px solid transparent'
+    if (PW_USER.value != '') {
+        return
+    }
+    const PW_LABEL = document.getElementById('pw-label')
+        PW_LABEL.classList.add('focus')
+
+})
+PW_USER.addEventListener('blur', () =>{
+    if (PW_USER.value != '') {
+        return
+    }
+    const PW_LABEL = document.getElementById('pw-label')
+        PW_LABEL.classList.remove('focus')
+
+})
+PW_USER.addEventListener('focus', () =>{
+})
+VERIFY_PW_USER.addEventListener('focus', () =>{
+    if (VERIFY_PW_USER.value != '') {
+        return
+    }
+    const PW_LABEL = document.getElementById('confirm-pw')
+        PW_LABEL.classList.add('focus')
+
+})
+VERIFY_PW_USER.addEventListener('blur', () =>{
+    if (VERIFY_PW_USER.value != '') {
+        return
+    }
+    const PW_LABEL = document.getElementById('confirm-pw')
+        PW_LABEL.classList.remove('focus')
+
+})
+VERIFY_PW_USER.addEventListener('focus', () =>{
 })

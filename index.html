@@ -69,13 +69,14 @@
             <div class="contenedor-filtros-especificos">
               <div class="filtros-especificos">
                 <p>Productos</p>
-                <select name="select">
+                <select name="select" id="filtro-producto">
                   <option value="0" selected>Seleccionar</option>
-                  <option value="1">Notebooks</option>
-                  <option value="2">Monitores</option>
-                  <option value="3">Teclados</option>
-                  <option value="4">Procesadores</option>
-                  <option value="5">Placas de video</option>
+                  <option value="notebook">Notebooks</option>
+                  <option value="monitor">Monitores</option>
+                  <option value="teclado">Teclados</option>
+                  <option value="procesador">Procesadores</option>
+                  <option value="sillas">Sillas gamer</option>
+                  <option value="placasdevideo">Placas de video</option>
                 </select>
               </div>
               <div class="filtros-especificos" id="filtro-range">
@@ -85,11 +86,11 @@
                   <input
                     type="range"
                     min="0"
-                    max="180000"
-                    value="40000"
+                    max="240000"
+                    value="240000"
                     id="input-range"
                   />
-                  <p>$40k</p>
+                  <p>$240k</p>
                 </div>
               </div>
             </div>

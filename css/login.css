@@ -6,6 +6,7 @@
     --grey: #393E46;
     --white: #EEEEEE;
     --black: #191919;
+    --green: #09cc78;
   }
   
 /*reset css*/
@@ -99,38 +100,63 @@ a:visited{
 .contenedor-login{
     width: 100%;
     min-width: 320px;
-    padding-top: 20vh;
     min-height: 300px;
-    height: 50vh;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     text-align: center;
     color: var(--white);
 }
+.contenedor-login img{
+    object-fit: cover;
+    max-width: 300px;
+    margin: auto;
+    margin-top: 200px;
+}
 .input{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 70%;
+}
+.input input{
+    outline: none;
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+    transition: .2s ease;
+    height: 25px;
+}
+.input input:focus{
+    border: 1px solid var(--blue);
+}
+.input input:valid{
+    border: 1px solid var(--green)
+}
+.input input:required:invalid{
+    border: 1px solid var(--red);
+}
+.label-input{
+    font-size: 1.2em;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    position: relative;
+    top: 30px;
+    left: 10px;
+    width:fit-content;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+    transition: .2s ease;
+    
+}
+.label-input.focus{
+    top: 0px;
+    color: white;
 }
 .contenedor-login h2{
     text-transform: uppercase;
-
+    margin: 25px;
     font-size: 2.5em;
     font-weight: 700;
-}
-.contenedor-login label{
-    text-transform: uppercase;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1.4em;
-}
-.contenedor-login div input{
-    width: 30%;
-    min-width: 200px;
-    height: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 1.3em;
 }
 #botonLog{
     width: 50%;
@@ -144,37 +170,47 @@ a:visited{
 }
 .contenedor-texto{
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
     font-size: 1.2em;
+    padding-bottom: 25px;
 }
 .contenedor-login a {
     margin-top: 10px;
 }
 .contenedor-inputs-login{
-    width: 85%;
+    width: 95%;
     min-width: 320px;
     min-height: 300px;
     margin: auto;
-    height: 50vh;
+    height: 100px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     text-align: left;
-    background-color: var(--grey);
     color: var(--white);
 }
 .boton-submit{
     width: 40%;
-    font-size: 1.4em;
     margin: auto;
-    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-color: var(--blue);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 500;
+    border-radius: 5px;
 }
-#botonLog{
+#botonLogin{
     display: block;
+
 }
 #botonRegister {
    display: none;
+   background-color: var(--green);
 }
 .contenedor-descripcion-principal{
     display: none;
@@ -203,11 +239,9 @@ a:visited{
     .contenedor-inputs-login{
         width: 90%;
         min-width: 320px;
-        padding-top: 20vh;
-        height: 50vh;
+        height: 300px;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
         margin-bottom: 15px;
     }
     .contenedor-login h2{
@@ -215,28 +249,7 @@ a:visited{
         font-size: 2.5em;
         font-weight: 700;
     }
-    .contenedor-login label{
-        text-transform: uppercase;
-        font-style: italic;
-        font-weight: 400;
-        font-size: 1.4em;
-        color: var(--white);
 
-    }
-    .contenedor-login input{
-        width: 60%;
-        min-width: 200px;
-        height: 30px;
-        margin-bottom: 0;
-        font-size: 1.3em;
-        border: none;
-        transition: 200ms ease;
-    
-    }
-    .contenedor-login input:focus{
-        outline: none;
-        box-shadow: 0px -2px 1px inset var(--light-blue);
-    }
     .contenedor-login a {
         font-size: 1.2em;
         color: var(--white);
