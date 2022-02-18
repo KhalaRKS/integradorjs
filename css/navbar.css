@@ -8,6 +8,13 @@
   * {
     font-family: 'Nunito', sans-serif;
 }
+.contenedor-logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+}
 .contenedor-header{
     position: fixed;
     z-index: 2;
@@ -96,6 +103,9 @@
     background: var(--red)
 }
 @media screen and (max-width:768px) {
+    .navbar-menu.login{
+        width: 100%;
+    }
     .boton-hamburguesa{
         display: block;
     }

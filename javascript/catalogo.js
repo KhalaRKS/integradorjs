@@ -50,7 +50,14 @@ function renderizarProducto(producto) {
     e.stopPropagation()
   })
   boton_comprar.setAttribute("class", "botonComprar");
+  boton_comprar.setAttribute('href', './carrito.html')
   boton_comprar.innerText = "Comprar";
+  boton_comprar.addEventListener('click', (e) =>{
+    agregarItemAlCarrito(producto.id)
+    colorearNumeroCarrito()
+    location.assign('./carrito.html')
+    e.stopPropagation()
+  })
 
   contenedor_botones.appendChild(boton_agregar);
   contenedor_botones.appendChild(boton_comprar);

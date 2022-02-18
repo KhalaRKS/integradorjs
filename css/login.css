@@ -67,7 +67,35 @@ html{
     background-color: var(--dark-blue);
 }
 /*ANIMACIONES*/
-
+@keyframes showAlerta {
+    0%{
+        left: 10%;
+        top: -50%;
+        opacity: 0;
+    }
+    3%{
+        top: 50%;
+        left: 10%;
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes noshowAlerta {
+    0%{
+        opacity: 1;
+        left: 10%;
+    }    
+    90%{
+        opacity: 0;
+        left: 0;
+    }
+    100%{
+        left: -130%;
+        opacity: 0;
+    }
+}
 @keyframes astronauta {
     0% {
         top: 50px;
@@ -134,9 +162,6 @@ html{
 .input input:valid{
     border: 1px solid var(--green)
 }
-.input input:required:invalid{
-    border: 1px solid var(--red);
-}
 .label-input{
     font-size: 1.2em;
     font-family: 'Nunito', sans-serif;
@@ -149,8 +174,8 @@ html{
     margin-bottom: 5px;
     color: black;
     transition: .2s ease;
-    
 }
+
 .label-input.focus{
     top: 0px;
     color: white;
@@ -225,7 +250,32 @@ html{
     display: flex;
     justify-content: space-between;
 }
+.contenedor-alerta{
+    position: absolute;
+    background-color: var(--red);
+    width: 80%;
+    height: 30px;
+    top: 50%;
+    left: 10%;
+    opacity: 0;
+    border-radius: 5px;
+    transition: .3s ease;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1em;
+    font-weight: 400;
+    font-style: italic;
+    padding: 10px;
 
+}
+.contenedor-alerta.inactive{
+    animation: noshowAlerta;
+    animation-duration: 4s;
+}
+.contenedor-alerta.active{
+animation: showAlerta;
+animation-duration: 4s;
+}
 @media screen and (min-width:768px){
     .contenedor-general-login{
         width: 100%;
@@ -261,6 +311,10 @@ html{
         font-size: 1.4em;
         font-weight: 600;
     }
+    .contenedor-alerta{
+        width: 30%;
+    }
+
     .contenedor-descripcion-principal{
         display: flex;
         flex-direction: column;
